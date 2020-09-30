@@ -30,8 +30,8 @@ export default function({ stats, isClosed }) {
           style={progressStyle}></div>
       </div>
       <div className={styles.progressPoints}>
-        <span>$0</span>
-        <span>${ isClosed ? '20' : '8' }m</span>
+        <span>0 ETH</span>
+        <span>{GOAL_ETH } ETH</span>
       </div>
     </div>
   );

@@ -47,7 +47,7 @@ export default class extends Component {
                 { isPhase1 &&
                   <span className={styles.maxContribution}>
                     Max contribution: {maxContribution} ETH<br />
-                    Min contribution: 0.01 ETH<br />
+                    Min contribution: 0.5 ETH<br />
                     <br />
                     Recommended gas<br />
                     Gas limit : 200,000 UNITS<br />

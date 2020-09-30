@@ -8,23 +8,21 @@ export default function({ isClosed }) {
   return (
     <dl className={styles.root}>
       <div>
-        <dt>Total Cap</dt>
-        <dd>$20m</dd>
+        <dt>Total Supply</dt>
+        <dd>10,000,000 OWL</dd>
       </div>
+      <br/>
       <div>
         <dt>Private Presale</dt>
-        <dd>$12m</dd>
+        <dd>360,000 OWL</dd>
       </div>
+      <br/>
       <div>
         <dt>
           Public Sale&nbsp;
           <i className={commonStyles.textDanger}>{isClosed ? 'Closed' : 'Live'}</i>
         </dt>
-        <dd>$8m</dd>
-      </div>
-      <div>
-        <dt>Total Supply</dt>
-        <dd>1b DOCK</dd>
+        <dd>2,600,000 OWL</dd>
       </div>
     </dl>
   );

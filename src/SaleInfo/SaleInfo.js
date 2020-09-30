@@ -16,7 +16,7 @@ export default function(props) {
       <section className={styles.sectionTop}>
         <h1>
           { isClosed ?
-            'The DOCK Token Sale is Closed' :
+            'The OWL Token Sale is Closed' :
             'Now Send ETH to Participate'
           }
         </h1>
@@ -37,9 +37,8 @@ export default function(props) {
 
       <footer>
         <section className={styles.helpSection}>
-          <p><strong>Need help?</strong><br /> Reach out to <a
-          href="mailto:support@dock.io">support@dock.io</a> or click on the
-          support link at the bottom right of this screen</p>
+          <p><strong>Need help?</strong><br /> Reach out in our Telegram channel <a
+          href="https://t.me/StealthSwapETH">t.me/StealthSwapETH</a></p>
         </section>
 
         <div className={styles.art}>

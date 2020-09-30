@@ -39,34 +39,6 @@ class App extends Component {
       now: moment(),
     };
 
-    const walletDataRaw = localStorage.getItem('dock-tokensale-wallet-data');
-    if (walletDataRaw) {
-      const walletData = JSON.parse(walletDataRaw);
-      this.state = {
-        ...this.state,
-        ...walletData,
-      };
-    }
-
-    this.handleSuccess = this.handleSuccess.bind(this);
-  }
-
-  componentDidMount() {
-    this.clockIntervalID = setInterval(
-      () => this.updateClock(),
-      1000
-    );
-
-    this.updateStats();
-    this.statsUpdateIntervalID = setInterval(
-      () => this.updateStats(),
-      30000
-    );
-  }
-
-  handleSuccess(data) {
-    localStorage.setItem('dock-tokensale-wallet-data', JSON.stringify(data));
-    this.setState(data);
   }
 
   async updateStats() {
@@ -87,6 +59,19 @@ class App extends Component {
     }
   }
 
+  componentDidMount() {
+    this.clockIntervalID = setInterval(
+      () => this.updateClock(),
+      1000
+    );
+
+    this.statsUpdateIntervalID = setInterval(
+      () => this.updateStats(),
+      30000
+    );
+  }
+
+
   updateClock() {
     const { lifecycleState } = this.state;
 
@@ -102,7 +87,7 @@ class App extends Component {
   }
 
   render() {
-    const { address, maxContribution, lifecycleState, stats, now } = this.state;
+    const { address, lifecycleState, stats, now } = this.state;
 
     const appView = (() => {
       switch (lifecycleState) {
@@ -117,9 +102,7 @@ class App extends Component {
         case LIFECYCLE_STATES.CLOSED:
           return <SaleInfo isClosed={true} />;
         default:
-          return address ?
-          <SaleInfo address={address} maxContribution={maxContribution} stats={stats} now={now} /> :
-          <CheckStatus onSuccess={this.handleSuccess} now={now} />;
+          return <SaleInfo address={"0x0000000000000000000000000000000000000000"} maxContribution={75} stats={stats} now={now} />;
       }
     })();
 
@@ -130,16 +113,16 @@ class App extends Component {
             <div className={styles.warning}>
               <img src={warning} className={styles.warningLogo} alt="warning" />
               <div>
-                The ONLY official URL for the DOCK Token is <strong>dock.io</strong>. Be careful of similar looking URLs.
+                The ONLY official URL for the OWL Token is <strong>stealthswap.org</strong>. Be careful of similar looking URLs.
                 <br className="no-mobile" /> For those participating in the token
-                sale, the ONLY URL is <strong>tokensale.dock.io</strong>
+                sale, the ONLY URL is <strong>crowdsale.stealthswap.org</strong>
               </div>
             </div>
           </div>
           <img src={logo} className={styles.logo} alt="logo" />
           { lifecycleState === LIFECYCLE_STATES.STARTED &&
             <p className={commonStyles.sectionSubtitle}>
-              Participate in the DOCK Token Sale
+              Participate in the OWL Token Sale
             </p>
           }
         </header>
