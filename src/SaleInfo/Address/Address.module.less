@@ -4,7 +4,7 @@
 @import '../../Components.module.less';
 
 .root {
-  background: linear-gradient(252deg, @color-primary, rgb(63, 142, 182));
+  background: linear-gradient(252deg, @primary,@primary);
   color: white;
   padding-top: 3rem;
   padding-bottom: 6.5rem;
@@ -12,7 +12,6 @@
 
 .form {
   margin-top: 3.4rem;
-  composes: content;
   display: flex;
   flex-direction: column;
   max-width: 64rem;
@@ -24,7 +23,7 @@
 
   input[type=text] {
     height: 6rem;
-    color: @color-secondary;
+    color: @secondary;
     max-width: 64rem;
     font-size: 2.4rem;
     text-align: center;

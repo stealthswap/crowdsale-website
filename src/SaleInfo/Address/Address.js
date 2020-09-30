@@ -66,7 +66,7 @@ export default class extends Component {
         { isPhase1 &&
           <section className={styles.countdownSection}>
             <div className={styles.countdown}>
-              Time left until individual cap is lifted
+              Time left until crowdsale's deadline
               <Countdown value={timeTillPhase1End} />
             </div>
           </section>

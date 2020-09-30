@@ -1,6 +1,16 @@
-@black: rgb(44, 43, 63);
-@color-primary: rgb(124, 71, 171);
-@color-secondary: rgb(97, 96, 120);
+@primary   : #4AA775;
+@secondary : #05386b;
+@accent    : #379683;
+@dark      : #282A2A;
+@light     : #F8F8F8;
+@positive  : #83bca9;
+@negative  : #a24936;
+@info      : #31CCEC;
+@warning   : #F2C037;
+@amethyst  : #393b44;
+@darkestgrey : #393b44;
+@darkgrey    : #393b44;
+@lightgrey   : #f1f3f8;
 
 @mobile: ~"(max-width: 767px)";
 @no-mobile: ~"(min-width: 768px)";
@@ -9,31 +19,31 @@
 @no-desktop: ~"(max-width: 1109px)";
 
 .color {
-  color: @black;
+  color: @secondary;
 }
 
 .btnPrimary {
   border: none;
-  background-color: @black;
-  color: white;
+  background-color: @primary;
+  color: @light;
   font-weight: bold;
 }
 
 .textSecondary {
-  color: @color-secondary;
+  color: @secondary;
 }
 
 .textSystem {
-  color: rgba(97, 96, 120, 0.67);
+  color: @secondary;
 }
 
 .textDanger {
-  color: rgb(243, 108, 86);
+  color:@negative;
 }
 
 .sectionSubtitle {
   font-size: 1.8rem;
-  color: @color-secondary;
+  color: @secondary;
 }
 
 .content {
@@ -42,7 +52,7 @@
 }
 
 .secondarySection {
-  background-color: rgb(246, 246, 246);
+  background-color: @light;
 }
 
 .linkBtn {

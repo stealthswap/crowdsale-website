@@ -88,10 +88,10 @@ export default class extends Component {
 
         { isPhase1 && (
           <div className={styles.countdown}>
-            Time left until individual cap is lifted
+            Time left until crowdsale's deadline.
             <Countdown value={timeTillPhase1End} />
             <small className={commonStyles.textSystem}>
-              <p>Max contribution: 1 ETH</p>
+              <p>Max contribution: 75 ETH</p>
             </small>
           </div>
         )}

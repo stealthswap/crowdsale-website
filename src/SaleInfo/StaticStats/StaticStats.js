@@ -13,7 +13,9 @@ export default function({ isClosed }) {
       </div>
       <br/>
       <div>
-        <dt>Private Presale</dt>
+        <dt>Private Presale&nbsp;
+        <i className={commonStyles.textDanger}>{'Closed'}</i>
+        </dt>
         <dd>360,000 OWL</dd>
       </div>
       <br/>

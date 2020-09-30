@@ -1,6 +1,12 @@
 @value commonStyles: 'Components.module.less';
 @value textSecondary, sectionSubtitle, content from commonStyles;
 
+@primary   : #4AA775;
+@secondary : #05386b;
+@accent    : #379683;
+@dark      : #282A2A;
+@light     : #F8F8F8;
+
 .content {
   composes: content;
   max-width: 70rem;
@@ -32,7 +38,6 @@
 
 .countdown {
   margin-top: 6.4rem;
-  composes: textSecondary;
   display: flex;
   flex-direction: column;
   font-size: 1.8rem;

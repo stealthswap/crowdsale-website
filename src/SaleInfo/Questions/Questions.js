@@ -11,9 +11,9 @@ export default function() {
         <h1>Questions</h1>
         <ol>
           <li>
-            <h4>When does the token sale end?</h4>
+            <h4>When does the crowdsale end?</h4>
             <p>
-              The Crowdsale will be open for 24 hours.
+              The Crowdsale will be open for 3 Days.
             </p>
           </li>
           <li>
@@ -38,17 +38,16 @@ export default function() {
           <li>
             <h4>When will i receive my tokens?</h4>
             <p>
-              After you participate on the token sale. 
-              The speed at which you recieve your funds is dependent on 
-              the gas fees you choose to pay. Tokens will be transferable immediately.
+              After the crowdsale is finalized, this is triggered by reaching
+              the maximum hard cap or deadline.
             </p>
           </li>
           <li>
             <h4>How can I trust I am sending to the official OWL address?</h4>
             <p>
-              Always triple check that you are on the official dock.io URL (The
-              official token sale page is crowdsale.stealthswap.org).
-             </p>
+              Always triple check that you are on the official StealthSwap URL (The
+              official crowdsale page is crowdsale.stealthswap.org).
+            </p>
           </li>
         </ol>
       </div>
