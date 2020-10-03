@@ -6,7 +6,7 @@ import {
   START_DATE
 } from 'data/constants';
 
-import logo from './logo.png';
+import logo from './transparent-logo.png';
 import warning from './warning.svg';
 import styles from './App.module.less';
 import commonStyles from 'Components.module.less';
@@ -119,12 +119,14 @@ class App extends Component {
               </div>
             </div>
           </div>
+          <div>
           <img src={logo} className={styles.logo} alt="logo" />
           { lifecycleState === LIFECYCLE_STATES.STARTED &&
-            <p className={commonStyles.sectionSubtitle}>
-              Participate in the OWL Token Sale
-            </p>
+            <h2 style={{color:"white", fontWeight:"200"}}>
+            Welcome to the OWL Crowdsale. <br/>To participate, send ETH to the crowdsale contract address below.
+            </h2>
           }
+          </div>
         </header>
 
         {appView}

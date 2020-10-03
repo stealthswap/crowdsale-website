@@ -6,50 +6,50 @@ import styles from './Questions.module.less';
 
 export default function() {
   return (
-    <section className={styles.root}>
+    <section className={styles.root} >
       <div className={commonStyles.content}>
         <h1>Questions</h1>
+        <hr/>
         <ol>
           <li>
-            <h4>When does the crowdsale end?</h4>
+            <h4>How long does the crowdsale last</h4>
             <p>
-              The Crowdsale will be open for 3 Days.
+              Oct 5th 22:00 UTC  - Oct 8th 22:00 UTC
             </p>
           </li>
           <li>
-            <h4>How much can I contribute?</h4>
+            <h4>What is the maximum amount I can contribute?</h4>
+            <p>75 ETH per address</p>
+          </li>
+          <li>
+            <h4>What is the minimum amount I can contribute?</h4>
+            <p>0.5 ETH</p>
+          </li>
+          <li>
+            <h4>Can I send money from an exchange wallet?</h4>
             <p>
-              You can send a maximum of 75 ETH.
+            No. Please do not send any ETH from an exchange wallet because you will 
+            not receive your tokens. Use your own wallet, we recommend MetaMask as 
+            it is the easiet.
             </p>
           </li>
           <li>
-            <h4>Is there a minimum contribution?</h4>
-            <p>Yes, 0.5 ETH.</p>
-          </li>
-          <li>
-            <h4>Can I send money from an exchange wallet like Coinbase?</h4>
+            <h4>When will I receive my tokens?</h4>
             <p>
-              No, do not send money from an exchange wallet. If for any reason
-              we need to return funds back to your wallet, funds that were
-              originally sent from an exchange wallet will be lost and you will
-              not be able to receive the tokens you purchase.
+              As soon as the crowdsale is finished either by reaching the maximum 
+              goal of 3,000 ETH or on Oct 8th at 22:00 UTC.
             </p>
           </li>
           <li>
-            <h4>When will i receive my tokens?</h4>
+            <h4>How can I verify this is the correct StealthSwap crowdsale site?</h4>
             <p>
-              After the crowdsale is finalized, this is triggered by reaching
-              the maximum hard cap or deadline.
-            </p>
-          </li>
-          <li>
-            <h4>How can I trust I am sending to the official OWL address?</h4>
-            <p>
-              Always triple check that you are on the official StealthSwap URL (The
-              official crowdsale page is crowdsale.stealthswap.org).
+              Join our telegram at <a href="https://t.me/StealthSwapETH">t.me/StealthSwapETH </a> 
+               and all the links needed will be provided there if you are unsure.
             </p>
           </li>
         </ol>
+        <hr/>
+        <br/>
       </div>
     </section>
   );
