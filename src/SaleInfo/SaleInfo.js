@@ -25,18 +25,17 @@ export default function(props) {
       </section>
       */}
       <br/>
+      <section className={styles.statsSection}>
+        { !isClosed && <h2 style={{fontSize: "32px", textDecoration: "underline"}}>Token Sale Details</h2> }
+        <StaticStats isClosed={isClosed} />
+        <DynamicStats stats={stats} isClosed={isClosed} />
+      </section>
       { !isClosed &&
         <Address
           address={address}
           maxContribution={maxContribution}
           now={now} />
       }
-      <section className={styles.statsSection}>
-        { !isClosed && <h2>Token Sale Details</h2> }
-        <StaticStats isClosed={isClosed} />
-        <DynamicStats stats={stats} isClosed={isClosed} />
-      </section>
-
       { !isClosed && <Questions /> }
 
       <footer>

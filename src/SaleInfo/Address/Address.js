@@ -31,7 +31,14 @@ export default class extends Component {
         <section className={styles.root}>
           <div className={commonStyles.content}>
             <div className={styles.form}>
-              <label>Send ETH to This Address</label>
+            <h3 >Instructions</h3>
+              <ol >
+                <li>Open Your Wallet</li>
+                <li>Send your ETH to the address below</li>
+                <li>You will automatically receive your tokens when the crowdsale has concluded</li>
+              </ol>
+              <br/>
+              <label>Crowdsale Address</label>
               <input
                 type="text"
                 readOnly

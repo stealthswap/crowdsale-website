@@ -6,6 +6,7 @@ import styles from './StaticStats.module.less';
 
 export default function({ isClosed }) {
   return (
+    <div>
     <dl className={styles.root}>
       <div>
         <dt>Total Supply</dt>
@@ -13,10 +14,9 @@ export default function({ isClosed }) {
       </div>
       <br/>
       <div>
-        <dt>Private Presale&nbsp;
-        <i className={commonStyles.textDanger}>{'Closed'}</i>
+        <dt>Crowdsale Goal
         </dt>
-        <dd>360,000 OWL</dd>
+        <dd>2960 ETH</dd>
       </div>
       <br/>
       <div>
@@ -27,5 +27,26 @@ export default function({ isClosed }) {
         <dd>2,600,000 OWL</dd>
       </div>
     </dl>
+    {/*--------------second section -------------- */}
+    <br/>
+    <br/>
+    <dl className={styles.root}>
+      <div>
+        <dt>Price Per Token</dt>
+        <dd>0.001026717557 ETH</dd>
+      </div>
+      <br/>
+      <div>
+        <dt>Maximum Contribution
+        </dt>
+        <dd>75 ETH</dd>
+      </div>
+      <br/>
+      <div>
+        <dt>Minimum Contribution</dt>
+        <dd>0.5 ETH</dd>
+      </div>
+    </dl>
+    </div>
   );
 }

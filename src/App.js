@@ -121,11 +121,15 @@ class App extends Component {
           </div>
           <div>
           <img src={logo} className={styles.logo} alt="logo" />
+          <h1 style = {{color: "white", fontSize: "48px"}}><a style = {{color: "white"}}href ={"https://stealthswap.org"}>StealthSwap</a></h1>
+          <hr style= {{width: "40%"}}/>
           { lifecycleState === LIFECYCLE_STATES.STARTED &&
+            
             <h2 style={{color:"white", fontWeight:"200"}}>
-            Welcome to the OWL Crowdsale. <br/>To participate, send ETH to the crowdsale contract address below.
+            <br/>Welcome to the OWL Crowdsale<br/>
             </h2>
           }
+          <br/>
           </div>
         </header>
 
