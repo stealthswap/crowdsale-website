@@ -2,16 +2,14 @@ import React, { Component } from 'react';
 import moment from 'moment';
 
 import {
-  GOAL_ETH,
+  GOAL_WEI,
   START_DATE
 } from 'data/constants';
 
-import logo from './logo.png';
+//import api from 'etherscan-api';
+import logo from './transparent-logo.png';
 import warning from './warning.svg';
 import styles from './App.module.less';
-import commonStyles from 'Components.module.less';
-
-import CheckStatus from './CheckStatus/CheckStatus';
 import SaleInfo from './SaleInfo/SaleInfo';
 import Countdown from 'Countdown/Countdown';
 
@@ -37,27 +35,28 @@ class App extends Component {
     this.state = {
       lifecycleState: getLifecycleState(),
       now: moment(),
+      balance: "0",
+      participants: "0"
     };
 
   }
 
   async updateStats() {
-    const response = await fetch('/api/v1/eth');
-    if (response.ok) {
-      const { amount, updated_at, last_amount } = await response.json();
-      const stats = { amount, updatedAt: updated_at, lastAmount: last_amount };
-
-      if (amount >= GOAL_ETH) {
+    fetch('https://api.etherscan.io/api?module=account&action=balance&address=0x280da9a925187a62a809D59b05b1FC399Faa02cA&tag=latest&apikey=KUPD89VYJARTBBCCVX7N72CU65TJAWEXV9')
+    .then(response => response.json())
+    .then(data => this.setState({ balance: data.result }));
+    // ^^^^ Balance of Crowdsale contract IN ****WEI****
+    if (parseInt(this.state.balance) >= GOAL_WEI) {
         clearInterval(this.statsUpdateIntervalID);
         this.setState({
-          lifecycleState: LIFECYCLE_STATES.CLOSED,
-          stats,
+          lifecycleState: LIFECYCLE_STATES.CLOSED
         });
-      } else {
-        this.setState({ stats });
-      }
     }
+    fetch('https://api.etherscan.io/api?module=account&action=txlist&address=0x280da9a925187a62a809D59b05b1FC399Faa02cA&startblock=0&endblock=99999999&sort=asc&apikey=KUPD89VYJARTBBCCVX7N72CU65TJAWEXV9')
+    .then(response => response.json())
+    .then(data => this.setState({ participants: data.result.length }));
   }
+
 
   componentDidMount() {
     this.clockIntervalID = setInterval(
@@ -70,7 +69,6 @@ class App extends Component {
       30000
     );
   }
-
 
   updateClock() {
     const { lifecycleState } = this.state;
@@ -87,7 +85,7 @@ class App extends Component {
   }
 
   render() {
-    const { address, lifecycleState, stats, now } = this.state;
+    const { lifecycleState, now } = this.state;
 
     const appView = (() => {
       switch (lifecycleState) {
@@ -102,7 +100,7 @@ class App extends Component {
         case LIFECYCLE_STATES.CLOSED:
           return <SaleInfo isClosed={true} />;
         default:
-          return <SaleInfo address={"0x0000000000000000000000000000000000000000"} maxContribution={75} stats={stats} now={now} />;
+          return <SaleInfo isClosed={false} address={"0x280da9a925187a62a809D59b05b1FC399Faa02cA"} maxContribution={75} balance={this.state.balance} now={now} participants={this.state.participants} />;
       }
     })();
 
@@ -119,12 +117,20 @@ class App extends Component {
               </div>
             </div>
           </div>
-          <img src={logo} className={styles.logo} alt="logo" />
+          <div>
+          <img alt={"StealthSwap Logo"}src={logo} className={styles.logo} alt="logo" />
+          <h1 style = {{color: "white", fontSize: "64px", marginTop: "-2.5rem", marginBottom: "-.5rem", fontWeight: "100"}}><a style = {{color: "white"}}href ={"https://stealthswap.org"}>StealthSwap</a></h1>
+          <hr style= {{width: "30%"}}/>
           { lifecycleState === LIFECYCLE_STATES.STARTED &&
-            <p className={commonStyles.sectionSubtitle}>
-              Participate in the OWL Token Sale
-            </p>
+            
+            <h1 style={{ fontSize: "32px",color:"white", fontWeight:"100", marginTop: "-4.5rem", marginBottom: "-2rem"}}>
+            <br/>Welcome to the OWL Crowdsale<br/>
+            </h1>
           }
+          <br/>
+          <br/>
+          </div>
+          <br/>          
         </header>
 
         {appView}

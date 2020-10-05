@@ -1,21 +1,20 @@
 import React from 'react';
 
 import {
-  GOAL_ETH
+  GOAL_WEI
 } from 'data/constants';
 
 import styles from './DynamicStats.module.less';
 import './DynamicStats.less';
 
-export default function({ stats, isClosed }) {
+export default function({ balance, isClosed }) {
   let progress = 0;
 
   if (isClosed) {
     progress = 100;
   } else {
-    if (stats) {
-      const { amount } = stats;
-      progress = Math.min(amount / GOAL_ETH * 100, 100);
+    if (balance) {
+      progress = Math.min(parseInt(balance) / GOAL_WEI * 100, 100);
     }
   }
 
@@ -23,15 +22,14 @@ export default function({ stats, isClosed }) {
 
   return (
     <div className={styles.root}>
-      <p><strong>{ isClosed ? 'TOKEN' : 'PUBLIC' } SALE RAISED</strong></p>
       <div className={styles.progressBar}>
         <div
           className={`${styles.progress} ${isClosed && 'no-animate'}`}
           style={progressStyle}></div>
       </div>
-      <div className={styles.progressPoints}>
-        <span>0 ETH</span>
-        <span>{GOAL_ETH } ETH</span>
+      <div >
+        <span style={{float: "left", alignText: "left", fontSize: "24px"}}>0%</span>
+        <span style={{float: "right",alignText: "right", fontSize: "24px"}}>100%</span>
       </div>
     </div>
   );
