@@ -34,6 +34,7 @@ export default class extends Component {
                 <li style={{textAlign: "left", fontSize: "20px"}} >Open your Ethereum wallet (i.e. MetaMask).</li>
                 <li style={{textAlign: "left", fontSize: "20px"}}>Send your ETH to the address below.</li>
                 <li style={{textAlign: "left", fontSize: "20px"}}>You will automatically receive your tokens when the crowdsale has concluded.</li>
+                <li style={{textAlign: "left", fontSize: "20px"}}>After the crowdsale has concluded, the StealthSwap team will add liquidity to Uniswap and then approve token holders to freely move their OWL. This is so we can ensure we have sufficient liquidity on Uniswap without problem.</li>
                 <li style={{textAlign: "left", fontSize: "20px"}}>If you send ETH after the crowdsale's goal is reached, then your TX will fail.</li>
               </ol>
               <br/>

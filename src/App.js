@@ -12,10 +12,6 @@ import warning from './warning.svg';
 import styles from './App.module.less';
 import SaleInfo from './SaleInfo/SaleInfo';
 import Countdown from 'Countdown/Countdown';
-import StaticStyles from 'SaleInfo/StaticStats/StaticStats.module.less';
-import Grid from './grid.js';
-import ethLogo from './ethLogo.png';
-import person from './person.png';
 
 const LIFECYCLE_STATES = {
   UNSTARTED: 'unstarted',
@@ -39,25 +35,28 @@ class App extends Component {
     this.state = {
       lifecycleState: getLifecycleState(),
       now: moment(),
-      balance: 0
+      balance: "0",
+      participants: "0"
     };
 
   }
 
   async updateStats() {
-    //const balance = await api.init('INSERT ETHERSCAN API KEY HERE').account.balance('INSERT CROWDSALE CONTRACT HERE');
+    fetch('https://api.etherscan.io/api?module=account&action=balance&address=0xEA674fdDe714fd979de3EdF0F56AA9716B898ec8&tag=latest&apikey=KUPD89VYJARTBBCCVX7N72CU65TJAWEXV9')
+    .then(response => response.json())
+    .then(data => this.setState({ balance: data.result }));
     // ^^^^ Balance of Crowdsale contract IN ****WEI****
-    const balance = "0";
-    if (parseInt(balance.result) >= GOAL_WEI) {
+    if (parseInt(this.state.balance) >= GOAL_WEI) {
         clearInterval(this.statsUpdateIntervalID);
         this.setState({
-          lifecycleState: LIFECYCLE_STATES.CLOSED,
-          balance
+          lifecycleState: LIFECYCLE_STATES.CLOSED
         });
-      } else {
-        this.setState({ balance });
-      }
     }
+    fetch('https://api.etherscan.io/api?module=account&action=txlist&address=0xde0b295669a9fd93d5f28d9ec85e40f4cb697bae&startblock=0&endblock=99999999&sort=asc&apikey=KUPD89VYJARTBBCCVX7N72CU65TJAWEXV9')
+    .then(response => response.json())
+    .then(data => this.setState({ participants: data.result.length }));
+  }
+
 
   componentDidMount() {
     this.clockIntervalID = setInterval(
@@ -67,7 +66,7 @@ class App extends Component {
 
     this.statsUpdateIntervalID = setInterval(
       () => this.updateStats(),
-      100000
+      30000
     );
   }
 
@@ -86,7 +85,7 @@ class App extends Component {
   }
 
   render() {
-    const { lifecycleState, balance, now } = this.state;
+    const { lifecycleState, now } = this.state;
 
     const appView = (() => {
       switch (lifecycleState) {
@@ -101,7 +100,7 @@ class App extends Component {
         case LIFECYCLE_STATES.CLOSED:
           return <SaleInfo isClosed={true} />;
         default:
-          return <SaleInfo address={""} maxContribution={75} balance={balance} now={now} />;
+          return <SaleInfo address={""} maxContribution={75} balance={this.state.balance} now={now} participants={this.state.participants} />;
       }
     })();
 

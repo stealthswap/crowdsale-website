@@ -4,7 +4,7 @@ import commonStyles from 'Components.module.less';
 
 import styles from './StaticStats.module.less';
 
-export default function({ isClosed }) {
+export default function({ isClose, balance, participants  }) {
   return (
     <div style={{marginTop: "-7.5rem"}}>
     <br/>
@@ -47,6 +47,7 @@ export default function({ isClosed }) {
     <br/>
     <hr style= {{width: "65%"}}/>
 
+  {/* CONTRACT DETAILS: PARTICIPANTS, ETH, OWL}*/}
     <div style={{ marginBottom: "-5rem", alignItems:"center", justifyContent: "center", textAlign: "center",  display: "flex"}}>
             <div style={{margin: "25px", color: "white", fontSize: "30px"}}>
               <h2 style={{fontWeight: '100', color: "white"}}>Total Participants</h2>
@@ -62,7 +63,7 @@ export default function({ isClosed }) {
             <h2 style={{fontWeight: '100', color: "white"}}>Total OWL Distributed</h2>
               <p style= {{color: "white", fontSize:"36px"}}>1.3M</p>
             </div>  
-          </div>
     </div>
+  </div>
   );
 }

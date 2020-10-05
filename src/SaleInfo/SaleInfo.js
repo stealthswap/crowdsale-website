@@ -11,26 +11,14 @@ import github from './github.png';
 import owlLogo from './owlLogo.png';
 
 export default function(props) {
-  const { balance, maxContribution, now, isClosed, address } = props;
+  const { balance, maxContribution, now, isClosed, address, participants } = props;
 
   return (
     <div>
-      {/*
-      <section className={styles.sectionTop}>
-        <h1><i>
-          { isClosed ?
-            'The OWL Token Sale is Closed' :
-            'Send ETH to Participate'
-          }
-        </i></h1>
-      </section>
-      
-      <h2 style={{fontSize: "32px", textDecoration: "underline"}}>Token Sale Details</h2> 
-      */}
       <br/>
       <section className={styles.statsSection}>
         { !isClosed }
-        <StaticStats isClosed={isClosed} />
+        <StaticStats isClosed={isClosed, balance, participants} />
         <DynamicStats balance={balance} isClosed={isClosed} />
       </section>
       { !isClosed &&

@@ -18,7 +18,7 @@ export default function() {
           </li>
           <li>
             <h3>When will I receive my tokens?</h3>
-            <p>As soon as the crowdsale is finished either by reaching the maximum goal of 3,000 ETH or on Oct 8th at 22:00 UTC.</p>
+            <p>As soon as the crowdsale is finished either by reaching the maximum goal of 2,690 ETH or on Oct 8th at 22:00 UTC.</p>
           </li>
           <li>
             <h3>Can I send money from an exchange wallet?</h3>
