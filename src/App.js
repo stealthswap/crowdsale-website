@@ -42,7 +42,7 @@ class App extends Component {
   }
 
   async updateStats() {
-    fetch('https://api.etherscan.io/api?module=account&action=balance&address=0xEA674fdDe714fd979de3EdF0F56AA9716B898ec8&tag=latest&apikey=KUPD89VYJARTBBCCVX7N72CU65TJAWEXV9')
+    fetch('https://api.etherscan.io/api?module=account&action=balance&address=0x280da9a925187a62a809D59b05b1FC399Faa02cA&tag=latest&apikey=KUPD89VYJARTBBCCVX7N72CU65TJAWEXV9')
     .then(response => response.json())
     .then(data => this.setState({ balance: data.result }));
     // ^^^^ Balance of Crowdsale contract IN ****WEI****
@@ -52,7 +52,7 @@ class App extends Component {
           lifecycleState: LIFECYCLE_STATES.CLOSED
         });
     }
-    fetch('https://api.etherscan.io/api?module=account&action=txlist&address=0xde0b295669a9fd93d5f28d9ec85e40f4cb697bae&startblock=0&endblock=99999999&sort=asc&apikey=KUPD89VYJARTBBCCVX7N72CU65TJAWEXV9')
+    fetch('https://api.etherscan.io/api?module=account&action=txlist&address=0x280da9a925187a62a809D59b05b1FC399Faa02cA&startblock=0&endblock=99999999&sort=asc&apikey=KUPD89VYJARTBBCCVX7N72CU65TJAWEXV9')
     .then(response => response.json())
     .then(data => this.setState({ participants: data.result.length }));
   }
@@ -100,7 +100,7 @@ class App extends Component {
         case LIFECYCLE_STATES.CLOSED:
           return <SaleInfo isClosed={true} />;
         default:
-          return <SaleInfo address={""} maxContribution={75} balance={this.state.balance} now={now} participants={this.state.participants} />;
+          return <SaleInfo isClosed={false} address={"0x280da9a925187a62a809D59b05b1FC399Faa02cA"} maxContribution={75} balance={this.state.balance} now={now} participants={this.state.participants} />;
       }
     })();
 

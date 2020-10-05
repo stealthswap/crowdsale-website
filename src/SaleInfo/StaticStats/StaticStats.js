@@ -56,12 +56,12 @@ export default function({ isClose, balance, participants  }) {
 
             <div style={{ margin: "10px",color: "black", fontSize: "30px"}}>
             <h2 style={{fontWeight: '100', color: "white"}}> Total ETH Received</h2>
-            <p style= {{color: "white", fontSize:"36px"}}>{balance}</p>
+            <p style= {{color: "white", fontSize:"36px"}}>{(parseInt(balance)/10**18).toFixed(2)}</p>
             </div>
             
             <div style={{margin: "10px", color: "black",  fontSize: "30px"}}>
             <h2 style={{fontWeight: '100', color: "white"}}>Total OWL Distributed</h2>
-              <p style= {{color: "white", fontSize:"36px"}}>1.3M</p>
+              <p style= {{color: "white", fontSize:"36px"}}>{((parseInt(balance)/10**18)/0.001026).toFixed(2)}</p>
             </div>  
     </div>
   </div>

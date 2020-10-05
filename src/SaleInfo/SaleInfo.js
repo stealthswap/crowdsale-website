@@ -18,7 +18,7 @@ export default function(props) {
       <br/>
       <section className={styles.statsSection}>
         { !isClosed }
-        <StaticStats isClosed={isClosed, balance, participants} />
+        <StaticStats isClosed={isClosed} balance={balance} participants={participants} />
         <DynamicStats balance={balance} isClosed={isClosed} />
       </section>
       { !isClosed &&
