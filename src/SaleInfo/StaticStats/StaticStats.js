@@ -51,12 +51,12 @@ export default function({ isClose, balance, participants  }) {
     <div style={{ marginBottom: "-5rem", alignItems:"center", justifyContent: "center", textAlign: "center",  display: "flex"}}>
             <div style={{margin: "25px", color: "white", fontSize: "30px"}}>
               <h2 style={{fontWeight: '100', color: "white"}}>Total Participants</h2>
-              <p style= {{color: "white", fontSize:"36px"}}>914</p>
+              <p style= {{color: "white", fontSize:"36px"}}>{participants}</p>
             </div>
 
             <div style={{ margin: "10px",color: "black", fontSize: "30px"}}>
             <h2 style={{fontWeight: '100', color: "white"}}> Total ETH Received</h2>
-              <p style= {{color: "white", fontSize:"36px"}}>1345</p>
+            <p style= {{color: "white", fontSize:"36px"}}>{balance}</p>
             </div>
             
             <div style={{margin: "10px", color: "black",  fontSize: "30px"}}>
