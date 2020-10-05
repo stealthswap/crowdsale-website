@@ -6,11 +6,12 @@ import DynamicStats from './DynamicStats/DynamicStats';
 import Address from './Address/Address';
 import Questions from './Questions/Questions';
 
-import art from './art.svg';
 import telegram from './telegram.png';
+import github from './github.png';
+import owlLogo from './owlLogo.png';
 
 export default function(props) {
-  const { stats, maxContribution, now, isClosed, address } = props;
+  const { balance, maxContribution, now, isClosed, address } = props;
 
   return (
     <div>
@@ -23,12 +24,14 @@ export default function(props) {
           }
         </i></h1>
       </section>
+      
+      <h2 style={{fontSize: "32px", textDecoration: "underline"}}>Token Sale Details</h2> 
       */}
       <br/>
       <section className={styles.statsSection}>
-        { !isClosed && <h2 style={{fontSize: "32px", textDecoration: "underline"}}>Token Sale Details</h2> }
+        { !isClosed }
         <StaticStats isClosed={isClosed} />
-        <DynamicStats stats={stats} isClosed={isClosed} />
+        <DynamicStats balance={balance} isClosed={isClosed} />
       </section>
       { !isClosed &&
         <Address
@@ -41,7 +44,14 @@ export default function(props) {
       <footer>
         <section className={styles.helpSection}>
           <p><strong>Need help?</strong><br /> Reach out in our Telegram channel<br/><br/>
-          <a href="https://t.me/StealthSwapETH"><img style = {{ height: "4rem", width: "4rem"}}target="_blank" src={telegram}/></a></p>
+          <a href="https://t.me/StealthSwapETH"><img alt={"Telegram Logo"} style = {{ height: "4rem", width: "4rem"}}target="_blank" src={telegram}/></a>
+          &nbsp;&nbsp;          &nbsp;&nbsp;  
+          <a href="https://github.com/stealthswap"><img alt={"Github Logo"} style = {{ height: "4rem", width: "4rem"}}target="_blank" src={github}/></a>
+          &nbsp;&nbsp;          &nbsp;&nbsp; 
+
+          <a href="https://stealthswap.org"><img alt={"Website Logo"} style = {{ height: "4rem", width: "4rem"}}target="_blank" src={owlLogo}/></a>
+          </p>
+          <br/>
         </section>
          
         <div className={styles.art}>

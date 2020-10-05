@@ -8,11 +8,12 @@
       content="
         default-src 'self';
         script-src 'self' 'unsafe-inline' https://www.googletagmanager.com https://www.google-analytics.com https://fullstory.com https://www.fullstory.com https://*.intercom.io https://*.intercomcdn.com https://*.intercomassets.com;
-        connect-src 'self' ws://localhost:3000 https://rs.fullstory.com https://*.intercom.io wss://*.intercom.io;
+        connect-src *;
         style-src 'self' 'unsafe-inline' blob: https://fonts.googleapis.com;
         font-src 'self' https://fonts.gstatic.com https://js.intercomcdn.com;
         img-src 'self' data: blob: https://*.gstatic.com https://static.intercomassets.com https://js.intercomcdn.com https://www.google-analytics.com;
       ">
+
     <!--
       manifest.json provides metadata used when your web app is added to the
       homescreen on Android. See https://developers.google.com/web/fundamentals/engage-and-retain/web-app-manifest/

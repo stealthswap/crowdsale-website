@@ -6,25 +6,22 @@ import styles from './StaticStats.module.less';
 
 export default function({ isClosed }) {
   return (
-    <div>
+    <div style={{marginTop: "-7.5rem"}}>
+    <br/>
     <dl className={styles.root}>
       <div>
         <dt>Total Supply</dt>
-        <dd>10,000,000 OWL</dd>
+        <dd>10M OWL</dd>
       </div>
       <br/>
       <div>
-        <dt>Crowdsale Goal
-        </dt>
-        <dd>2960 ETH</dd>
+        <dt>Crowdsale Goal</dt>
+        <dd>2690 ETH</dd>
       </div>
       <br/>
       <div>
-        <dt>
-          Public Sale&nbsp;
-          <i className={commonStyles.textDanger}>{isClosed ? 'Closed' : 'Live'}</i>
-        </dt>
-        <dd>2,600,000 OWL</dd>
+        <dt>Public Sale</dt>
+        <dd>2.6M OWL</dd>
       </div>
     </dl>
     {/*--------------second section -------------- */}
@@ -33,7 +30,7 @@ export default function({ isClosed }) {
     <dl className={styles.root}>
       <div>
         <dt>Price Per Token</dt>
-        <dd>0.001026717557 ETH</dd>
+        <dd>0.001026 ETH</dd>
       </div>
       <br/>
       <div>
@@ -47,6 +44,25 @@ export default function({ isClosed }) {
         <dd>0.5 ETH</dd>
       </div>
     </dl>
+    <br/>
+    <hr style= {{width: "65%"}}/>
+
+    <div style={{ marginBottom: "-5rem", alignItems:"center", justifyContent: "center", textAlign: "center",  display: "flex"}}>
+            <div style={{margin: "25px", color: "white", fontSize: "30px"}}>
+              <h2 style={{fontWeight: '100', color: "white"}}>Total Participants</h2>
+              <p style= {{color: "white", fontSize:"36px"}}>914</p>
+            </div>
+
+            <div style={{ margin: "10px",color: "black", fontSize: "30px"}}>
+            <h2 style={{fontWeight: '100', color: "white"}}> Total ETH Received</h2>
+              <p style= {{color: "white", fontSize:"36px"}}>1345</p>
+            </div>
+            
+            <div style={{margin: "10px", color: "black",  fontSize: "30px"}}>
+            <h2 style={{fontWeight: '100', color: "white"}}>Total OWL Distributed</h2>
+              <p style= {{color: "white", fontSize:"36px"}}>1.3M</p>
+            </div>  
+          </div>
     </div>
   );
 }

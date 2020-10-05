@@ -2,18 +2,20 @@ import React, { Component } from 'react';
 import moment from 'moment';
 
 import {
-  GOAL_ETH,
+  GOAL_WEI,
   START_DATE
 } from 'data/constants';
 
+//import api from 'etherscan-api';
 import logo from './transparent-logo.png';
 import warning from './warning.svg';
 import styles from './App.module.less';
-import commonStyles from 'Components.module.less';
-
-import CheckStatus from './CheckStatus/CheckStatus';
 import SaleInfo from './SaleInfo/SaleInfo';
 import Countdown from 'Countdown/Countdown';
+import StaticStyles from 'SaleInfo/StaticStats/StaticStats.module.less';
+import Grid from './grid.js';
+import ethLogo from './ethLogo.png';
+import person from './person.png';
 
 const LIFECYCLE_STATES = {
   UNSTARTED: 'unstarted',
@@ -37,27 +39,25 @@ class App extends Component {
     this.state = {
       lifecycleState: getLifecycleState(),
       now: moment(),
+      balance: 0
     };
 
   }
 
   async updateStats() {
-    const response = await fetch('/api/v1/eth');
-    if (response.ok) {
-      const { amount, updated_at, last_amount } = await response.json();
-      const stats = { amount, updatedAt: updated_at, lastAmount: last_amount };
-
-      if (amount >= GOAL_ETH) {
+    //const balance = await api.init('INSERT ETHERSCAN API KEY HERE').account.balance('INSERT CROWDSALE CONTRACT HERE');
+    // ^^^^ Balance of Crowdsale contract IN ****WEI****
+    const balance = "0";
+    if (parseInt(balance.result) >= GOAL_WEI) {
         clearInterval(this.statsUpdateIntervalID);
         this.setState({
           lifecycleState: LIFECYCLE_STATES.CLOSED,
-          stats,
+          balance
         });
       } else {
-        this.setState({ stats });
+        this.setState({ balance });
       }
     }
-  }
 
   componentDidMount() {
     this.clockIntervalID = setInterval(
@@ -67,10 +67,9 @@ class App extends Component {
 
     this.statsUpdateIntervalID = setInterval(
       () => this.updateStats(),
-      30000
+      100000
     );
   }
-
 
   updateClock() {
     const { lifecycleState } = this.state;
@@ -87,7 +86,7 @@ class App extends Component {
   }
 
   render() {
-    const { address, lifecycleState, stats, now } = this.state;
+    const { lifecycleState, balance, now } = this.state;
 
     const appView = (() => {
       switch (lifecycleState) {
@@ -102,7 +101,7 @@ class App extends Component {
         case LIFECYCLE_STATES.CLOSED:
           return <SaleInfo isClosed={true} />;
         default:
-          return <SaleInfo address={"0x0000000000000000000000000000000000000000"} maxContribution={75} stats={stats} now={now} />;
+          return <SaleInfo address={""} maxContribution={75} balance={balance} now={now} />;
       }
     })();
 
@@ -120,17 +119,19 @@ class App extends Component {
             </div>
           </div>
           <div>
-          <img src={logo} className={styles.logo} alt="logo" />
-          <h1 style = {{color: "white", fontSize: "48px"}}><a style = {{color: "white"}}href ={"https://stealthswap.org"}>StealthSwap</a></h1>
-          <hr style= {{width: "40%"}}/>
+          <img alt={"StealthSwap Logo"}src={logo} className={styles.logo} alt="logo" />
+          <h1 style = {{color: "white", fontSize: "64px", marginTop: "-2.5rem", marginBottom: "-.5rem", fontWeight: "100"}}><a style = {{color: "white"}}href ={"https://stealthswap.org"}>StealthSwap</a></h1>
+          <hr style= {{width: "30%"}}/>
           { lifecycleState === LIFECYCLE_STATES.STARTED &&
             
-            <h2 style={{color:"white", fontWeight:"200"}}>
+            <h1 style={{ fontSize: "32px",color:"white", fontWeight:"100", marginTop: "-4.5rem", marginBottom: "-2rem"}}>
             <br/>Welcome to the OWL Crowdsale<br/>
-            </h2>
+            </h1>
           }
           <br/>
+          <br/>
           </div>
+          <br/>          
         </header>
 
         {appView}

@@ -4,8 +4,6 @@ import moment from 'moment';
 
 import { PHASE_1_END_DATE } from 'data/constants';
 
-import Countdown from 'Countdown/Countdown';
-
 import styles from './Address.module.less';
 import commonStyles from 'Components.module.less';
 
@@ -30,16 +28,17 @@ export default class extends Component {
       <div>
         <section className={styles.root}>
           <div className={commonStyles.content}>
-            <div className={styles.form}>
-            <h3 >Instructions</h3>
-              <ol >
-                <li>Open Your Wallet</li>
-                <li>Send your ETH to the address below</li>
-                <li>You will automatically receive your tokens when the crowdsale has concluded</li>
+            <div style = {{display: "flex", flexDirection: "column"}}>
+            <h1 style={{textAlign: "center", color: "#2b292a"}}>Instructions</h1>
+              <ol>
+                <li style={{textAlign: "left", fontSize: "20px"}} >Open your Ethereum wallet (i.e. MetaMask).</li>
+                <li style={{textAlign: "left", fontSize: "20px"}}>Send your ETH to the address below.</li>
+                <li style={{textAlign: "left", fontSize: "20px"}}>You will automatically receive your tokens when the crowdsale has concluded.</li>
+                <li style={{textAlign: "left", fontSize: "20px"}}>If you send ETH after the crowdsale's goal is reached, then your TX will fail.</li>
               </ol>
               <br/>
-              <label>Crowdsale Address</label>
-              <input
+              <label style={{fontSize: "2.5rem", textAlign: "center"}}>Crowdsale Address</label>
+              <input style ={{width: "100%", textAlign: "center", fontSize: "2.4rem", height: "6rem", letterSpacing: "1px"}}
                 type="text"
                 readOnly
                 value={address}
@@ -51,16 +50,6 @@ export default class extends Component {
                 null
               }
               <div className={styles.formBottom}>
-                { isPhase1 &&
-                  <span className={styles.maxContribution}>
-                    Max contribution: {maxContribution} ETH<br />
-                    Min contribution: 0.5 ETH<br />
-                    <br />
-                    Recommended gas<br />
-                    Gas limit : 200,000 UNITS<br />
-                    Gas price: 6 GWEI<br />
-                  </span>
-                }
                 <a
                   className={styles.toggeQR}
                   onClick={() => this.toggleQRCode()}>
@@ -70,14 +59,6 @@ export default class extends Component {
             </div>
           </div>
         </section>
-        { isPhase1 &&
-          <section className={styles.countdownSection}>
-            <div className={styles.countdown}>
-              Time left until crowdsale's deadline
-              <Countdown value={timeTillPhase1End} />
-            </div>
-          </section>
-        }
       </div>
     );
   }
